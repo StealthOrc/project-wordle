@@ -3,6 +3,7 @@ import React from 'react';
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import GuessResult from '../GuessResult'
+import Keyboard from '../Keyboard/'
 
 
 import {checkGuess} from '../../game-helpers'
@@ -71,6 +72,18 @@ function Game() {
     setInput(inputText.toUpperCase());
   }
 
+  const handleAddChar = (char) => {
+    const nextInput = input+char;
+    if (nextInput.length > constants.NUM_GUESS_CHARS)
+      return;
+    setInput(nextInput.toUpperCase());
+  }
+
+  const handleDelete = (event) => {
+    const nextInput = input.slice(0,input.length-1);
+    setInput(nextInput);
+  }
+
   return <>
     <GuessResult answer={answer} guesses={suggestions} createGuess={createGuess}/>
     <form className="guess-input-wrapper"
@@ -102,6 +115,10 @@ function Game() {
           </div>
         )
       }
+      <Keyboard 
+        handleChar={handleAddChar} 
+        handleEnter={handleSubmit} 
+        handleDelete={handleDelete}/>
     </form>
   </>;
 }

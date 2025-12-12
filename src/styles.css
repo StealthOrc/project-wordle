@@ -230,3 +230,20 @@ h1 {
     transform: translateY(0%);
   }
 }
+
+.keyboard-row {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.keyboard-key {
+  border: solid 1px gray;
+  padding: 0.5rem;
+}
+
+.keyboard-key:hover {
+  background-color: grey;
+}
