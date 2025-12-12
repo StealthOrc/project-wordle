@@ -77,6 +77,11 @@ function Game() {
       onSubmit={handleSubmit}>
       <label htmlFor="guess-input">Enter guess:</label>
       <input id="guess-input" type="text" 
+        required
+        minLength={constants.NUM_GUESS_CHARS}
+        maxLength={constants.NUM_GUESS_CHARS}
+        pattern="[a-zA-Z]{5}"
+        title="5 letter word"
         {...{disabled:isWonOrLoss()}}
         value={input}
         onChange={handleOnChange}
